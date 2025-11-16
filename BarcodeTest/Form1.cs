@@ -15,7 +15,7 @@ namespace BascolApp
     public partial class Form1 : Form
     {
         // BascolSerialPortStreamTest tester;
-        BascolSerialPortStreamTest tester;
+        BascolSerialPortStream tester;
 
         public Form1()
         {
@@ -33,7 +33,7 @@ namespace BascolApp
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            tester = new BascolSerialPortStreamTest(txtPort.Text, 9600);
+            tester = new BascolSerialPortStream(txtPort.Text, 9600);
             bool result3 = tester.Open();
 
             if (result3)
@@ -47,7 +47,7 @@ namespace BascolApp
         private void btnReadData_Click(object sender, EventArgs e)
         {
             // Test reading data
-            tester = new BascolSerialPortStreamTest(txtPort.Text, 9600);
+            tester = new BascolSerialPortStream(txtPort.Text, 9600);
             this.txtData.Text += $"\r\n{DateTime.Now}: " + tester.ReadData();
         }
 

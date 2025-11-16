@@ -9,12 +9,12 @@ namespace Mali.MaliControls
     /// <summary>
     /// Test class using standard .NET SerialPort for Bascol device
     /// </summary>
-    public class BascolSerialPortTest : IDisposable
+    public class BascolSerialPort : IDisposable
     {
         private SerialPort serialPort;
         private bool disposed = false;
 
-        public BascolSerialPortTest(string portName, int baudRate = 9600)
+        public BascolSerialPort(string portName, int baudRate = 9600)
         {
             serialPort = new SerialPort(portName, baudRate)
             {
@@ -177,7 +177,7 @@ namespace Mali.MaliControls
             }
         }
 
-        ~BascolSerialPortTest()
+        ~BascolSerialPort()
         {
             Dispose(false);
         }

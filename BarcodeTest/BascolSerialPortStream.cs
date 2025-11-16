@@ -10,13 +10,13 @@ namespace Mali.MaliControls
     /// Test class using SerialPortStream library for CH340 compatibility
     /// This bypasses .NET's problematic SerialPort class
     /// </summary>
-    public class BascolSerialPortStreamTest
+    public class BascolSerialPortStream
     {
         private SerialPortStream serialPort;
 
         private string portName;
 
-        public BascolSerialPortStreamTest(string portName, int baudRate = 9600)
+        public BascolSerialPortStream(string portName, int baudRate = 9600)
         {
             this.portName = portName;
             serialPort = new SerialPortStream(portName, baudRate)
