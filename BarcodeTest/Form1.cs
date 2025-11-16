@@ -13,9 +13,14 @@ namespace BascolApp
 {
     public partial class Form1 : Form
     {
+        BascolSerialPortStreamTest tester;
+
         public Form1()
         {
             InitializeComponent();
+
+            this.btnClose.Enabled = false;
+            this.btnReadData.Enabled = false;
         }
 
         // TestForm.cs
@@ -26,26 +31,33 @@ namespace BascolApp
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            //var tester = new BascolCH340Test(txtPort.Text, 9600);
-            //tester.RunAllTests();
-
-            var tester = new BascolSerialPortStreamTest(txtPort.Text, 9600);
-
-            // Test all methods
-            //tester.RunAllSerialPortStreamTests();
-
-            // Or test individual methods
-            //bool result1 = tester.TestMethod1_SerialPortStream_NoControlSignals();
-            //bool result2 = tester.TestMethod2_SerialPortStream_SetSignalsAfterOpen(false, false);
+            tester = new BascolSerialPortStreamTest(txtPort.Text, 9600);
             bool result3 = tester.TestMethod3_SerialPortStream_DifferentBaudRates();
 
-            // Test reading data
-            int weight = tester.TestReadDataSerialPortStream();
+            if (result3)
+            {
+                this.btnOpen.Enabled = false;
+                this.btnClose.Enabled = true;
+                this.btnReadData.Enabled = true;
+            }            
         }
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
-          
+            // Test reading data
+            int weight = tester.TestReadDataSerialPortStream();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (tester != null)
+            {
+                tester.Close();
+                MessageBox.Show("Serial port closed.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.btnOpen.Enabled = true;
+                this.btnClose.Enabled = false;
+                this.btnReadData.Enabled = false;
+            }
         }
     }
 }

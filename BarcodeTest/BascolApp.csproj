@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BascolCH340Test.cs" />
     <Compile Include="BascolSerialPortStreamTest.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
