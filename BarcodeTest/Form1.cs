@@ -22,7 +22,7 @@ namespace BascolApp
             InitializeComponent();
 
             this.btnClose.Enabled = false;
-            this.btnReadData.Enabled = false;
+            //this.btnReadData.Enabled = false;
         }
 
         // TestForm.cs
@@ -40,14 +40,15 @@ namespace BascolApp
             {
                 this.btnOpen.Enabled = false;
                 this.btnClose.Enabled = true;
-                this.btnReadData.Enabled = true;
+                //this.btnReadData.Enabled = true;
             }            
         }
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
             // Test reading data
-            int weight = tester.ReadData();
+            tester = new BascolSerialPortStreamTest(txtPort.Text, 9600);
+            this.txtData.Text += $"\r\n{DateTime.Now}: " + tester.ReadData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -64,10 +65,10 @@ namespace BascolApp
                 // Give the driver time to fully release the port
                 Thread.Sleep(500);
 
-                MessageBox.Show("Serial port closed.", "Info 1", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Serial port closed.", "Info 2", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.btnOpen.Enabled = true;
                 this.btnClose.Enabled = false;
-                this.btnReadData.Enabled = false;
+               // this.btnReadData.Enabled = false;
             }
         }
     }

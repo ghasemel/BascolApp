@@ -35,22 +35,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBaudRate = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.txtData = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(466, 331);
+            this.btnOpen.Location = new System.Drawing.Point(368, 170);
             this.btnOpen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(112, 35);
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Visible = false;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(448, 185);
+            this.txtPort.Location = new System.Drawing.Point(490, 55);
             this.txtPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(148, 26);
@@ -60,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(396, 189);
+            this.label1.Location = new System.Drawing.Point(438, 59);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 20);
@@ -69,7 +71,7 @@
             // 
             // btnReadData
             // 
-            this.btnReadData.Location = new System.Drawing.Point(466, 392);
+            this.btnReadData.Location = new System.Drawing.Point(490, 170);
             this.btnReadData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReadData.Name = "btnReadData";
             this.btnReadData.Size = new System.Drawing.Size(112, 35);
@@ -81,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(356, 229);
+            this.label2.Location = new System.Drawing.Point(398, 99);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 20);
@@ -90,7 +92,7 @@
             // 
             // txtBaudRate
             // 
-            this.txtBaudRate.Location = new System.Drawing.Point(448, 225);
+            this.txtBaudRate.Location = new System.Drawing.Point(490, 95);
             this.txtBaudRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBaudRate.Name = "txtBaudRate";
             this.txtBaudRate.Size = new System.Drawing.Size(148, 26);
@@ -99,20 +101,33 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(622, 331);
+            this.btnClose.Location = new System.Drawing.Point(621, 170);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(112, 35);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Visible = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // txtData
+            // 
+            this.txtData.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtData.Location = new System.Drawing.Point(0, 248);
+            this.txtData.Multiline = true;
+            this.txtData.Name = "txtData";
+            this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtData.Size = new System.Drawing.Size(1200, 444);
+            this.txtData.TabIndex = 8;
+            this.txtData.WordWrap = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBaudRate);
@@ -137,6 +152,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBaudRate;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TextBox txtData;
     }
 }
 
