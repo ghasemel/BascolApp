@@ -32,6 +32,8 @@ namespace Mali.MaliControls
         {
             if (serialPort != null)
             {
+                string portName = serialPort.PortName;
+
                 if (serialPort.IsOpen)
                 {
                     MessageBox.Show("Closing...",
@@ -60,6 +62,14 @@ namespace Mali.MaliControls
 
                 serialPort.Dispose();  // releases OS handles
                 serialPort = null;
+
+                // Reset the USB device to clear driver state (like changing settings in Device Manager)
+                Thread.Sleep(200);
+                bool reset = UsbDeviceReset.ResetComPort(portName);
+                if (reset)
+                {
+                    MessageBox.Show($"USB device {portName} reset successfully", "Device Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
