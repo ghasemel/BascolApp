@@ -36,10 +36,29 @@ namespace Mali.MaliControls
                 {
                     MessageBox.Show("Closing...",
                       "SerialPortStream Test 3", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    try
+                    {
+                        // Reset DTR and RTS signals before closing - this resets CH340 driver state
+                        serialPort.DtrEnable = false;
+                        serialPort.RtsEnable = false;
+
+                        // Discard any pending data in buffers
+                        serialPort.DiscardInBuffer();
+                        serialPort.DiscardOutBuffer();
+
+                        // Small delay to let driver process the changes
+                        Thread.Sleep(100);
+                    }
+                    catch (Exception)
+                    {
+                        // Ignore errors during cleanup
+                    }
+
                     serialPort.Close();
                 }
 
-                serialPort.Dispose();  // ADD THIS - releases OS handles
+                serialPort.Dispose();  // releases OS handles
                 serialPort = null;
             }
         }
@@ -47,7 +66,7 @@ namespace Mali.MaliControls
         /// <summary>
         /// Test Method 3: Try different baud rates using SerialPortStream
         /// </summary>
-        public bool TestMethod3_SerialPortStream_DifferentBaudRates()
+        public bool Open()
         {
             // var baudRates = new[] { 9600 };
 
@@ -65,8 +84,8 @@ namespace Mali.MaliControls
                     serialPort.Close();
                 }
 
-                // Create new instance with different baud rate
-                serialPort.BaudRate = 9600;
+                // Don't set BaudRate here - it's already configured in constructor
+                // serialPort.BaudRate = 9600;  // REMOVED - causes issues with CH340
                 serialPort.Open();
                 Thread.Sleep(200);
 
@@ -98,7 +117,7 @@ namespace Mali.MaliControls
         /// <summary>
         /// Test reading data from the scale using SerialPortStream
         /// </summary>
-        public int TestReadDataSerialPortStream()
+        public int ReadData()
         {
             try
             {
